@@ -9,6 +9,11 @@ const { catalog, discoverExecutable, safeEnv, launchPlan, status } = require('..
 
 // All subprocesses and executable filesystem checks are synthetic. No account
 // files, real auth commands, provider endpoints, or login flows are accessed.
+// Exercise the macOS-only adapter on POSIX CI without changing runtime support.
+// Unsupported native platforms are independently asserted below.
+const hostPlatform = Object.getOwnPropertyDescriptor(process, 'platform');
+test.beforeEach(() => Object.defineProperty(process, 'platform', { value: 'darwin' }));
+test.afterEach(() => Object.defineProperty(process, 'platform', hostPlatform));
 const profileDirectory = '/tmp/mmm-synthetic-cli-profile';
 const workspace = path.join(profileDirectory, 'workspace');
 const executable = kind => '/usr/local/bin/' + kind;
@@ -120,13 +125,15 @@ test('status output limit, timeout, cancellation and spawn errors are finite and
   const actual = await check('codex', errored); assert.equal(actual.status, 'failed'); assert.ok(!JSON.stringify(actual).includes('CANARY'));
   assert.equal((await status('codex', { executable: executable('codex'), profileDirectory, spawnImpl() { throw Error('PRIVATE_CANARY'); } })).status, 'failed');
 });
-test('Windows support is explicitly unavailable rather than launching a batch wrapper', async () => {
+test('Linux and Windows CLI support is explicitly unavailable without filesystem checks or spawning', async () => {
   const original = Object.getOwnPropertyDescriptor(process, 'platform');
-  Object.defineProperty(process, 'platform', { value: 'win32' });
   try {
-    assert.equal(catalog()[0].platformSupported, false);
-    assert.equal(discoverExecutable('codex', { fsImpl: { statSync() { throw Error('must not inspect'); } } }), null);
-    assert.equal((await status('codex')).status, 'unsupported_platform');
-    assert.throws(() => launchPlan('codex', 'login', 'C:\\tools\\codex.cmd', 'C:\\workspace', { profileDirectory: 'C:\\profile' }), { code: 'CLI_PLATFORM_UNSUPPORTED' });
+    for (const platform of ['linux', 'win32']) {
+      Object.defineProperty(process, 'platform', { value: platform });
+      assert.equal(catalog()[0].platformSupported, false);
+      assert.equal(discoverExecutable('codex', { fsImpl: { statSync() { throw Error('must not inspect'); } } }), null);
+      assert.equal((await status('codex', { spawnImpl() { throw Error('must not spawn'); } })).status, 'unsupported_platform');
+      assert.throws(() => launchPlan('codex', 'login', 'C:\\tools\\codex.cmd', 'C:\\workspace', { profileDirectory: 'C:\\profile' }), { code: 'CLI_PLATFORM_UNSUPPORTED' });
+    }
   } finally { Object.defineProperty(process, 'platform', original); }
 });

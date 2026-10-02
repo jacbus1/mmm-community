@@ -27,7 +27,14 @@ Local screenshots are development artifacts, not packaged user data.
 
 ## Not established by these checks
 
-Hosted Linux/Windows CI, physical-device testing, screen-reader audit, live
+The initial hosted run found non-hermetic macOS CLI tests on Linux and native
+Windows incompatibilities (permissions, open-file lifecycle, migration fsync,
+source paths and test fixtures). The CLI tests now explicitly model macOS and
+separately assert Linux/Windows CLI rejection. Runtime platform guards are not
+weakened. Native Windows is unsupported in this beta, with manual diagnostic CI
+retained rather than representing failing tests as a supported release.
+
+Physical-device testing, screen-reader audit, live
 provider/model availability, desktop installer signing, native end-to-end
 integration, and independent security assessment remain outstanding at the time
 of this local validation. See GitHub Actions for subsequent hosted CI results.

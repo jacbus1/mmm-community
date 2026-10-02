@@ -8,7 +8,7 @@
 - Translated four-role design preset and paper/forest visual design.
 - Installation, architecture, design, security and contribution documentation.
 - Source release allowlist, digest verification and regression suite.
-- CI configuration for Node 24/26 on Linux, macOS and Windows.
+- Release CI for Node 24/26 on Linux and macOS; optional Windows diagnostics.
 
 ## Community publication
 
@@ -25,6 +25,9 @@
 
 ## Later, separately scoped
 
+- Native Windows portability: permissions, open-file lifecycle, migration fsync,
+  source-path handling and platform-correct test fixtures. Windows is unsupported
+  for this beta, not silently accepted by the release CI matrix.
 - Reproducible Electron packaging, signing and notarization.
 - Native file/CLI integration tests on each OS.
 - More reviewed gateway model identities and clearer rejection guidance.

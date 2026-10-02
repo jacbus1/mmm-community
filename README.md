@@ -4,6 +4,11 @@ A local-first workbench for multi-model collaboration, design, and human review.
 
 **Community beta | MIT | Node.js 24+ | English / 繁體中文 / 简体中文**
 
+**Supported beta platforms: macOS and Linux (browser mode). Native Windows is
+not supported yet**: the initial hosted run exposed filesystem permission,
+open-file and migration differences. Do not rely on this beta for Windows data.
+The optional native CLI bridge is macOS-only; Linux browser/API work is separate.
+
 Think together. Design deliberately. Keep the work yours.
 
 This standalone source edition reuses the older MMM public-app baseline, not
@@ -78,7 +83,7 @@ telemetry or automatic personal-account import.
 | --- | --- |
 | macOS | `~/Library/Application Support/MMM-Community` |
 | Linux | `$XDG_DATA_HOME/MMM-Community` or `~/.local/share/MMM-Community` |
-| Windows | `%LOCALAPPDATA%\MMM-Community` |
+| Windows (unsupported) | Reserved: `%LOCALAPPDATA%\MMM-Community` |
 
 Project data is not encrypted at rest; use OS disk encryption. Browser-mode
 provider keys live only in server memory. Explicit AI tasks send selected text
@@ -126,6 +131,7 @@ See [Design](docs/DESIGN.md), [Architecture](docs/ARCHITECTURE.md),
 電腦。瀏覽器模式的 Key 不會永久保存，重啟後須重新輸入。
 
 這是獨立公開 repo 的原始碼測試版，不含已簽署桌面安裝包；原本私人 repo 維持不變。
+目前支援 macOS／Linux 的瀏覽器模式，原生 Windows 因權限及資料遷移相容問題暫不支援。
 
 ## License
 
