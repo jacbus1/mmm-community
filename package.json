@@ -1,0 +1,26 @@
+{
+  "name": "mmm-community",
+  "productName": "MMM Community",
+  "version": "0.1.0-beta.1",
+  "private": true,
+  "description": "A local-first workbench for multi-model collaboration, design and human review.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jacbus1/mmm-community.git"
+  },
+  "homepage": "https://github.com/jacbus1/mmm-community#readme",
+  "bugs": {
+    "url": "https://github.com/jacbus1/mmm-community/issues"
+  },
+  "dependencies": {},
+  "main": "desktop.cjs",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node server.cjs",
+    "test": "node --test test/*.test.cjs",
+    "release:source": "node scripts/package-source.cjs"
+  }
+}

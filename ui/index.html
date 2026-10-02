@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>MMM Community · Project workbench</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" type="image/png" href="/logo.png">
+  <script src="/i18n.js" defer></script>
+  <script src="/app.js" defer></script>
+  <script src="/mail.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skipContent">跳至內容</a>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Projects" data-i18n-aria="projects">
+      <a class="brand" href="#" aria-label="MMM home" id="home-link"><img class="brand-mark brand-image" src="/logo.png" alt="" width="40" height="40"><span>MMM<span class="brand-caption" data-i18n="workspace">專案工作空間</span></span><span class="beta">BETA</span></a>
+      <button class="button primary new-project" id="new-project"><span aria-hidden="true">＋</span><span data-i18n="newProject">新增專案</span><span class="shortcut" aria-hidden="true">N</span></button>
+      <div class="section-heading"><span data-i18n="yourProjects">你的專案</span><span id="project-count" class="count">0</span></div>
+      <nav id="project-list" class="project-list" aria-label="Project list" data-i18n-aria="projectList"></nav>
+      <p id="project-list-empty" class="sidebar-empty" data-i18n="sidebarEmpty">從一個想法開始。</p>
+      <div class="sidebar-bottom">
+        <div class="local-card"><span class="status-dot" aria-hidden="true"></span><div><strong data-i18n="localWorkspace">本機工作空間</strong><p data-i18n="localHint">專案保存在這部裝置</p></div></div>
+        <button class="sidebar-settings" id="open-settings"><span class="settings-symbol" aria-hidden="true">⚙</span><span data-i18n="settings">設定與服務</span><span aria-hidden="true">↗</span></button>
+      </div>
+    </aside>
+    <div class="workspace-shell">
+      <header class="topbar"><div class="breadcrumb"><span data-i18n="workspace">專案工作空間</span><span aria-hidden="true">/</span><span id="breadcrumb-project" data-i18n="home">首頁</span></div><div class="topbar-right"><span id="connection-status" class="connection-status" role="status" data-i18n="connecting">正在連接本機…</span><label class="sr-only" for="language" data-i18n="language">語言</label><select id="language" class="language-select"><option value="zh-Hant">繁體中文</option><option value="zh-Hans">简体中文</option><option value="en">English</option></select></div></header>
+      <main id="main" tabindex="-1">
+        <div id="global-error" class="notice error" role="alert" hidden></div>
+        <div id="global-notice" class="notice success" role="status" hidden></div>
+        <section id="welcome" class="welcome">
+          <div class="eyebrow"><span class="small-diamond" aria-hidden="true"></span><span data-i18n="welcomeEyebrow">一個專案，一位協調者</span></div>
+          <h1 data-i18n="welcomeTitle">把想法，變成下一步。</h1>
+          <p class="welcome-lead" data-i18n="welcomeLead">將對話、任務與成果放在一起。先整理想法，再選擇要交給 AI 的工作。</p>
+          <button class="button primary large" id="welcome-create"><span data-i18n="createFirst">建立第一個專案</span><span aria-hidden="true">→</span></button>
+          <p class="welcome-footnote" data-i18n="noAccount">不需 MMM 帳戶。連接 AI 服務是可選項。</p>
+          <section class="studio-flow" aria-label="Design workflow">
+            <p class="studio-label" data-i18n="studioLabel">小團隊，清楚的協作流程。</p>
+            <ol><li><span aria-hidden="true">01</span><strong data-i18n="studioDesign">設計</strong></li><li><span aria-hidden="true">02</span><strong data-i18n="studioBuild">實作</strong></li><li><span aria-hidden="true">03</span><strong data-i18n="studioReview">審核</strong></li></ol>
+            <p class="studio-note" data-i18n="studioNote">你的需求，不同的觀點，由你做最後決定。</p>
+          </section>
+          <div class="welcome-steps">
+            <article><span class="step-number">01</span><h2 data-i18n="stepOneTitle">留住想法</h2><p data-i18n="stepOneText">先寫筆記、釐清目標，讓每個專案有自己的上下文。</p></article>
+            <article><span class="step-number">02</span><h2 data-i18n="stepTwoTitle">明確交付</h2><p data-i18n="stepTwoText">由你選擇服務與內容，明確建立 AI 任務。</p></article>
+            <article><span class="step-number">03</span><h2 data-i18n="stepThreeTitle">驗收成果</h2><p data-i18n="stepThreeText">檢查成果證據，再決定是否批准完成。</p></article>
+          </div>
+          <div class="privacy-note"><span aria-hidden="true">◈</span><p data-i18n="privacyNote">筆記保存在本機。只有你明確提交 AI 任務時，才會把指定內容傳給選定服務。</p></div>
+        </section>
+        <section id="project-workspace" hidden>
+          <div class="project-header"><div><div class="eyebrow" data-i18n="projectEyebrow">你的專案，清楚掌握</div><h1 id="project-title"></h1><p class="project-subtitle" data-i18n="projectSubtitle">一個協調者，串起想法、工作與成果。</p></div><span class="coordinator-badge"><span class="coordinator-avatar" aria-hidden="true">M</span><span data-i18n="oneCoordinator">專案協調者</span></span></div>
+          <div class="tabs" role="tablist" aria-label="Project views" data-i18n-aria="projectViews">
+            <button id="tab-conversation" class="tab active" role="tab" aria-selected="true" aria-controls="panel-conversation" data-tab="conversation" data-i18n="conversation">對話</button>
+            <button id="tab-tasks" class="tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="panel-tasks" data-tab="tasks"><span data-i18n="tasks">任務</span><span class="tab-count" id="tasks-count">0</span></button>
+            <button id="tab-artifacts" class="tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="panel-artifacts" data-tab="artifacts"><span data-i18n="artifacts">成果</span><span class="tab-count" id="artifacts-count">0</span></button>
+            <button id="tab-activity" class="tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="panel-activity" data-tab="activity" data-i18n="activity">動態</button>
+          </div>
+          <section id="panel-conversation" class="tab-panel" role="tabpanel" aria-labelledby="tab-conversation">
+            <div class="conversation-layout"><div class="conversation-main"><div id="messages" class="messages"></div>
+              <form id="composer" class="composer">
+                <div class="composer-modes" role="group" aria-label="Message type" data-i18n-aria="messageType"><button type="button" id="mode-note" class="mode-button active" aria-pressed="true" data-i18n="noteMode">筆記</button><button type="button" id="mode-ai" class="mode-button" aria-pressed="false" data-i18n="aiMode">AI 任務</button></div>
+                <label class="sr-only" for="message-input" data-i18n="messageLabel">你的想法或任務內容</label><textarea id="message-input" rows="2" maxlength="12000" required data-i18n-placeholder="notePlaceholder" placeholder="寫下想法、目標，或下一步…"></textarea>
+                <div id="ai-options" class="ai-options" hidden><div class="field"><label for="task-provider" data-i18n="service">AI 服務</label><select id="task-provider"></select></div><div class="field"><label for="task-classification" data-i18n="classification">內容分類</label><select id="task-classification"><option value="non-sensitive" data-i18n="nonSensitive">非敏感內容</option><option value="sensitive" data-i18n="sensitive">敏感／私人內容</option></select></div><label class="checkbox-label"><input id="non-sensitive-confirm" type="checkbox"><span data-i18n="confirmNonSensitive">我已檢查內容，確認不含密鑰、個資或私人資料。</span></label><p class="helper" data-i18n="aiDisclosure">提交後會傳送給選定服務，可能產生費用。完成前需要你驗收成果。</p></div>
+                <div class="composer-footer"><span class="helper" id="composer-hint" data-i18n="noteHint">僅儲存本機 · 不會呼叫 AI</span><button type="submit" class="button primary" id="send-message" data-i18n="saveNote">儲存筆記</button></div>
+              </form>
+            </div><aside class="project-aside"><div class="context-card"><div class="context-icon" aria-hidden="true">✧</div><h2 data-i18n="focusTitle">從清楚的下一步開始</h2><p data-i18n="focusText">記下目標與驗收條件。需要協助時，再把一段明確的工作交给 AI。</p><div class="context-divider"></div><span class="mini-label" data-i18n="workingAgreement">協作方式</span><p class="small-copy" data-i18n="workingAgreementText">筆記不會自動啟動工作。AI 產生的成果，需要你檢查與批准。</p></div><div class="service-tip"><span class="status-dot muted" aria-hidden="true"></span><p id="service-summary"></p><button class="text-button" id="connect-services" data-i18n="manageServices">管理服務 →</button></div></aside></div>
+          </section>
+          <section id="panel-tasks" class="tab-panel" role="tabpanel" aria-labelledby="tab-tasks" hidden><div class="panel-heading"><div><h2 data-i18n="taskHeading">把下一步，安排好。</h2><p data-i18n="taskDescription">追蹤進度，檢查證據，再批准完成。</p></div><button class="button secondary" id="new-ai-task" data-i18n="newAiTask">＋ 建立 AI 任務</button></div><div id="tasks-list" class="card-list"></div></section>
+          <section id="panel-artifacts" class="tab-panel" role="tabpanel" aria-labelledby="tab-artifacts" hidden><div class="panel-heading"><div><h2 data-i18n="artifactHeading">可以檢查的成果。</h2><p data-i18n="artifactDescription">任務的實際輸出會集中在這裡。</p></div></div><div id="artifacts-list" class="card-list"></div></section>
+          <section id="panel-activity" class="tab-panel" role="tabpanel" aria-labelledby="tab-activity" hidden><div class="panel-heading"><div><h2 data-i18n="activityHeading">每一步，都有記錄。</h2><p data-i18n="activityDescription">專案中的操作與狀態變更。</p></div></div><ol id="activity-list" class="activity-list"></ol></section>
+        </section>
+      </main>
+      <footer class="app-footer"><span>MMM <span data-i18n="publicBeta">公開測試版</span></span><span data-i18n="footerText">由你決定下一步。</span></footer>
+    </div>
+  </div>
+  <dialog id="onboarding-dialog" class="onboarding-dialog" aria-labelledby="onboarding-title"><div class="dialog-body"><span class="brand-mark large-mark" aria-hidden="true">m</span><div class="eyebrow" data-i18n="welcomeToMmm">歡迎使用 MMM</div><h2 id="onboarding-title" data-i18n="onboardingTitle">你的工作空間。你的節奏。</h2><p data-i18n="onboardingText">不需註冊，先開始一個本機專案。想要 AI 協助時，再連接你選擇的服務。</p><label for="onboarding-language" data-i18n="language">語言</label><select id="onboarding-language"><option value="zh-Hant">繁體中文</option><option value="zh-Hans">简体中文</option><option value="en">English</option></select><div class="onboarding-points"><p data-i18n="onboardingLocal">✓ 筆記與專案保存在本機</p><p data-i18n="onboardingImport">✓ 不會自動匯入個人帳戶或資料</p><p data-i18n="onboardingChoice">✓ AI 服務可隨時設定</p></div><button class="button primary full-width" id="onboarding-start" data-i18n="startDirectly">直接開始</button><button class="button secondary full-width" id="onboarding-connect" data-i18n="connectFirst">先連接 AI 服務</button><button class="text-button full-width" id="onboarding-skip" data-i18n="skipOnboarding">略過導覽</button></div></dialog>
+  <dialog id="project-dialog" aria-labelledby="project-dialog-title"><form id="project-form" class="dialog-body"><div class="dialog-header"><h2 id="project-dialog-title" data-i18n="newProject">新增專案</h2><button type="button" class="icon-button" data-close="project-dialog" aria-label="Close" data-i18n-aria="close">×</button></div><p class="muted-copy" data-i18n="projectNameHelp">给這個想法一個名字。其他內容可以慢慢補上。</p><label for="project-name" data-i18n="projectName">專案名稱</label><input id="project-name" name="name" maxlength="120" required autocomplete="off" data-i18n-placeholder="projectNamePlaceholder" placeholder="例如：我的下一個作品"><div class="dialog-actions"><button type="button" class="button secondary" data-close="project-dialog" data-i18n="cancel">取消</button><button type="submit" class="button primary" data-i18n="createProject">建立專案</button></div><p class="form-error" id="project-error" role="alert" hidden></p></form></dialog>
+  <dialog id="settings-dialog" class="settings-drawer" aria-labelledby="settings-title"><div class="drawer-header"><div><div class="eyebrow" data-i18n="makeItYours">打造你的工作空間</div><h2 id="settings-title" data-i18n="settings">設定與服務</h2></div><button class="icon-button" data-close="settings-dialog" aria-label="Close" data-i18n-aria="close">×</button></div><div class="drawer-content"><section class="settings-section"><h3 data-i18n="aiServices">AI 服務</h3><p class="muted-copy" data-i18n="servicesDescription">選擇你自己的服務。連接後仍需明確提交任務，才會傳送內容。</p><div id="providers-list" class="providers-list"></div><details id="provider-details" class="provider-details"><summary data-i18n="addService">＋ 連接服務</summary><form id="provider-form"><div class="field"><label for="provider-kind" data-i18n="providerType">服務供應商</label><select id="provider-kind" required></select></div><div class="field"><label for="provider-model" data-i18n="model">模型</label><input id="provider-model" list="model-options" required maxlength="160" autocomplete="off"><datalist id="model-options"></datalist><p id="model-help" class="helper" data-i18n="modelHelp">請填入供應商提供的模型 ID。</p></div><div class="field"><label for="provider-key" data-i18n="apiKey">API 密鑰</label><input id="provider-key" type="password" autocomplete="new-password" spellcheck="false" maxlength="4096" aria-describedby="key-help"><p id="key-help" class="helper" data-i18n="keyHelp">密鑰提交後會清空，不會寫入瀏覽器儲存空間。</p></div><details class="advanced-settings"><summary data-i18n="advanced">進階設定</summary><div class="field"><label for="provider-endpoint" data-i18n="endpoint">API 端點</label><input id="provider-endpoint" type="url" autocomplete="off" placeholder="https://" maxlength="500"><p class="helper" data-i18n="endpointHelp">端點會接收你的任務及密鑰。只填入你信任的服務地址。</p></div></details><button class="button primary full-width" type="submit" data-i18n="saveService">儲存服務設定</button><p id="provider-error" class="form-error" role="alert" hidden></p></form></details></section><section class="settings-section"><h3 data-i18n="storageTitle">本機資料</h3><p id="storage-status" class="muted-copy"></p><p id="storage-directory" class="storage-directory"></p><button id="choose-storage" class="button secondary" data-i18n="chooseStorage">選擇資料位置</button><p class="helper" id="storage-availability"></p><label class="button secondary import-button" for="import-file" data-i18n="importJson">匯入專案 JSON</label><input type="file" id="import-file" accept="application/json,.json" class="sr-only"><p class="helper" data-i18n="importHelp">只讀取你選擇的檔案；不會搜尋私人資料夾。</p></section><section class="settings-section"><h3 data-i18n="otherServices">其他整合</h3><div id="integrations-list"></div><p class="helper" data-i18n="integrationHelp">不會自動連接個人帳戶、讀取郵件或匯入瀏覽器資料。</p></section><section class="settings-section"><h3 data-i18n="aboutTitle">關於此版本</h3><p class="muted-copy" data-i18n="aboutText">MMM 公開測試版。每個專案有一位協調者。AI 回應需由你檢查；服務費用與可用性由供應商決定。</p><button class="text-button" id="show-onboarding" data-i18n="showIntro">重新查看入門介紹</button></section></div></dialog>
+  <dialog id="confirm-dialog" aria-labelledby="confirm-title"><div class="dialog-body"><div class="dialog-header"><h2 id="confirm-title"></h2><button class="icon-button" data-close="confirm-dialog" aria-label="Close" data-i18n-aria="close">×</button></div><p id="confirm-description"></p><div class="dialog-actions"><button class="button secondary" data-close="confirm-dialog" data-i18n="cancel">取消</button><button class="button primary" id="confirm-action" data-i18n="confirm">確認</button></div></div></dialog>
+  <dialog id="approval-dialog" aria-labelledby="approval-title"><form id="approval-form" class="dialog-body"><div class="dialog-header"><h2 id="approval-title" data-i18n="approveTitle">檢查與驗收</h2><button class="icon-button" type="button" data-close="approval-dialog" aria-label="Close" data-i18n-aria="close">×</button></div><p data-i18n="approveDescription">請先查看成果，記錄實際驗收證據。只有你批准後，任務才算完成。</p><div id="approval-artifacts"></div><label for="acceptance-evidence" data-i18n="evidenceLabel">驗收證據</label><textarea id="acceptance-evidence" rows="4" maxlength="2000" required data-i18n-placeholder="evidencePlaceholder" placeholder="檢查了哪些成果？如何符合任務要求？"></textarea><label class="checkbox-label"><input id="approval-confirm" type="checkbox" required><span data-i18n="approveConfirm">我已檢查實際成果，確認符合要求。</span></label><p id="approval-error" class="form-error" role="alert" hidden></p><div class="dialog-actions"><button class="button secondary" type="button" data-close="approval-dialog" data-i18n="cancel">取消</button><button class="button primary" type="submit" data-i18n="approveComplete">批准完成</button></div></form></dialog>
+  <template id="synthetic-prototype"><article data-fixture="synthetic-only"><h2>Weekend reading plan</h2><p>A fictional project for UI checks. No connected service or completed AI task is implied.</p><span data-status="draft">Draft</span></article></template>
+</body>
+</html>

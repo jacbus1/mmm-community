@@ -1,0 +1,14 @@
+node_modules/
+dist/
+output/
+.playwright-cli/
+.env
+.env.*
+*.pem
+*.key
+*.sqlite*
+*.db*
+*.log
+.DS_Store
+coverage/
+.mmm-data/
