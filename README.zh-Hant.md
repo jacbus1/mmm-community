@@ -4,6 +4,8 @@
 
 [English](README.md) · **繁體中文** · [简体中文](README.zh-Hans.md)
 
+**從這裡開始：** [逐步使用教學](docs/TUTORIAL.zh-Hant.md)——先做本機任務，再按需要使用 AI 與團隊討論。
+
 **社群測試版 | MIT | Node.js 24+**
 
 **目前支援 macOS 和 Linux 的瀏覽器模式，暫不支援原生 Windows。**初步託管測試發現 Windows 的檔案權限、開啟檔案及資料遷移行為有差異，請勿依賴此測試版儲存 Windows 資料。可選的原生 CLI 橋接只支援 macOS；Linux 的瀏覽器與 API 功能另行運作。

@@ -4,6 +4,8 @@ A local-first workbench for multi-model collaboration, design, and human review.
 
 **English** · [繁體中文](README.zh-Hant.md) · [简体中文](README.zh-Hans.md)
 
+**Start here:** [Step-by-step tutorial](docs/TUTORIAL.md) — local tasks first, then optional AI and team discussion.
+
 **Community beta | MIT | Node.js 24+**
 
 **Supported beta platforms: macOS and Linux (browser mode). Native Windows is

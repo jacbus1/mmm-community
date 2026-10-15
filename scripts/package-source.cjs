@@ -14,6 +14,7 @@ const RUNTIME = Object.freeze([
 const FILES = Object.freeze([...RUNTIME,
   'LICENSE.txt', 'README.md', 'README.zh-Hant.md', 'README.zh-Hans.md', 'CONTRIBUTING.md', 'SECURITY.md', '.gitignore',
   '.github/workflows/ci.yml', 'docs/DESIGN.md', 'docs/ARCHITECTURE.md', 'docs/ROADMAP.md', 'docs/VALIDATION.md',
+  'docs/TUTORIAL.md', 'docs/TUTORIAL.zh-Hant.md', 'docs/TUTORIAL.zh-Hans.md',
   'docs/screenshots/home.png', 'docs/screenshots/project-workspace.png', 'docs/screenshots/design-team.png',
   'scripts/package-source.cjs',
   ...['archive-markdown-integration', 'cli-connections', 'desktop-bridge', 'external-browser',
