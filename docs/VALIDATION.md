@@ -23,7 +23,17 @@ Edition: 0.1.0-beta.1. Platform: macOS. No paid provider calls were made.
 - Narrow-screen team view: document width remains 390 pixels.
 - Browser console: zero errors and warnings during this flow.
 
-Local screenshots are development artifacts, not packaged user data.
+Local screenshots from this validation were development artifacts, not packaged
+user data.
+
+## README images and localization - 2026-10-15
+
+Three new README screenshots were captured from a disposable Community data
+directory. They show the home view, one synthetic local note, and an
+unconfigured design-team draft. No provider was connected or invoked, and no
+session fragment is visible. The images and complete English, Traditional
+Chinese and Simplified Chinese README files are included in the source archive;
+other local screenshots remain development artifacts.
 
 ## Not established by these checks
 

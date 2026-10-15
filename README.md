@@ -2,7 +2,9 @@
 
 A local-first workbench for multi-model collaboration, design, and human review.
 
-**Community beta | MIT | Node.js 24+ | English / 繁體中文 / 简体中文**
+**English** · [繁體中文](README.zh-Hant.md) · [简体中文](README.zh-Hans.md)
+
+**Community beta | MIT | Node.js 24+**
 
 **Supported beta platforms: macOS and Linux (browser mode). Native Windows is
 not supported yet**: the initial hosted run exposed filesystem permission,
@@ -17,6 +19,24 @@ integration** and requires no MMM account. The original private repository
 has not been made public by this edition.
 
 Community repository: [jacbus1/mmm-community](https://github.com/jacbus1/mmm-community).
+
+![MMM Community home screen, English](docs/screenshots/home.png)
+
+## Screenshots
+
+These are captures of this Community edition using a disposable local project.
+The example has no connected AI provider and no AI task was run.
+
+**Project workspace:** a synthetic community-library note saved locally.
+
+![A local project conversation with a synthetic community-library note](docs/screenshots/project-workspace.png)
+
+**Design team draft:** four roles with AI services still unconfigured.
+
+![Four-role design team draft, with AI services unconfigured](docs/screenshots/design-team.png)
+
+The design-team screenshot shows a **draft**, not completed agent work. No
+personal accounts, credentials or session URL appear in these images.
 
 ## Quick start
 
@@ -116,22 +136,6 @@ remain separate release work.
 See [Design](docs/DESIGN.md), [Architecture](docs/ARCHITECTURE.md),
 [Roadmap](docs/ROADMAP.md), [Contributing](CONTRIBUTING.md), and
 [Security](SECURITY.md).
-
-## 中文快速開始
-
-這是從舊 MMM 整理的獨立社群版，並非把私人 GitHub 專案直接公開。
-不包含 Antigravity，也不會複製原本的帳戶、金鑰或專案資料。
-
-安裝 Node.js 24 或更新版本，在專案目錄執行 `npm start`，開啟終端機
-顯示的完整本機網址。無須註冊或 API Key，即可建立專案、筆記及本機任務。
-需要 AI 時才自行設定服務及模型，費用由你的供應商帳戶承擔。
-
-「團隊」頁可套用協調者、UI/UX 設計師、工程師及審核者。先為角色選擇
-服務並儲存，再明確提交任務。這是多角色文字協作，不是自動寫程式或操作
-電腦。瀏覽器模式的 Key 不會永久保存，重啟後須重新輸入。
-
-這是獨立公開 repo 的原始碼測試版，不含已簽署桌面安裝包；原本私人 repo 維持不變。
-目前支援 macOS／Linux 的瀏覽器模式，原生 Windows 因權限及資料遷移相容問題暫不支援。
 
 ## License
 

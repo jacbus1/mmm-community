@@ -12,8 +12,9 @@ const RUNTIME = Object.freeze([
   'ui/index.html', 'ui/app.js', 'ui/styles.css', 'ui/i18n.js', 'ui/mail.js', 'ui/logo.png'
 ]);
 const FILES = Object.freeze([...RUNTIME,
-  'LICENSE.txt', 'README.md', 'CONTRIBUTING.md', 'SECURITY.md', '.gitignore',
+  'LICENSE.txt', 'README.md', 'README.zh-Hant.md', 'README.zh-Hans.md', 'CONTRIBUTING.md', 'SECURITY.md', '.gitignore',
   '.github/workflows/ci.yml', 'docs/DESIGN.md', 'docs/ARCHITECTURE.md', 'docs/ROADMAP.md', 'docs/VALIDATION.md',
+  'docs/screenshots/home.png', 'docs/screenshots/project-workspace.png', 'docs/screenshots/design-team.png',
   'scripts/package-source.cjs',
   ...['archive-markdown-integration', 'cli-connections', 'desktop-bridge', 'external-browser',
     'mail', 'manager-integration', 'markdown-exchange', 'providers', 'release', 'server',

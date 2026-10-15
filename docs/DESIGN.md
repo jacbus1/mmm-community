@@ -20,7 +20,8 @@ agent activity or provider capabilities for a prettier dashboard.
 | Interface | Trebuchet MS / Noto Sans TC / sans-serif | Readable controls |
 
 Fonts are local fallbacks, never fetched externally. Original MMM logo bytes
-are retained without private artwork or screenshots.
+are retained. README screenshots show this Community edition with disposable,
+synthetic local data; they contain no private artwork or account data.
 
 The welcome view places an editorial introduction beside a Design / Build /
 Review worksheet. This is a process illustration, not a simulated active team.
